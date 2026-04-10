@@ -2,6 +2,33 @@ import React from 'react';
 import { Link, NavLink } from 'react-router';
 
 const NavBar = () => {
+    const links = (
+        <>
+        <li>
+            <NavLink to="/"
+                className={({isActive}) =>`font-semibold ${isActive ? "text-green-500 border border-green-500" : ""}`}
+            >
+                Home
+            </NavLink>
+        </li>
+        <li>
+            <NavLink to="/books"
+                className={({isActive}) =>`font-semibold ${isActive ? "text-green-500 border border-green-500" : ""}`}
+            >
+                Listed Books
+            </NavLink>
+        </li>
+        <li>
+            <NavLink to="/page-to-read"
+                className={({isActive}) =>`font-semibold ${isActive ? "text-green-500 border border-green-500" : ""}`}
+            >
+                Page To Read
+            </NavLink>
+        </li>
+        </>
+    )
+
+
     return (
         <div className="navbar bg-base-100 w-full max-w-6xl mx-auto">
             <div className="navbar-start">
@@ -11,19 +38,15 @@ const NavBar = () => {
                     </div>
                     <ul
                         tabIndex="-1"
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/books">Listed Books</NavLink></li>
-                        <li><NavLink>Pages to Read</NavLink></li>
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-5">
+                        {links}
                     </ul>
                 </div>
-                <NavLink to="/" className="btn btn-ghost text-2xl font-bold md:block hidden">Book Vibe</NavLink>
+                <NavLink to="/" className="btn btn-ghost text-2xl font-black md:block hidden">Book Vibe</NavLink>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 text-xl">
-                    <li><NavLink to="/">Home</NavLink></li>
-                    <li><NavLink to="/books">Listed Books</NavLink></li>
-                    <li><NavLink>Pages to Read</NavLink></li>
+                <ul className="menu menu-horizontal px-1 text-xl gap-5">
+                    {links}
                 </ul>
             </div>
             <div className="navbar-end gap-5">
